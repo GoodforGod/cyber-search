@@ -1,0 +1,82 @@
+#
+# Ports:
+# 9042         Cassandra
+# 9200         Elastic HTTP
+# 9300         Elastic Transport
+# 9092         Kafka
+# 3030         Kafka Explorer
+# 9090         Prometheus
+# 3000         Grafana
+# 8529         ArangoDB
+# 8180         Parity
+#
+
+version: '3'
+services:
+
+#  fast-data-dev:
+#    container_name: fast-data-dev-search
+#    image: landoop/fast-data-dev:latest
+#    ports:
+#      - "3030:3030"
+#      - "9092:9092"
+#      - "2181:2181"
+#      - "9581-9584:9581-9584"
+#    environment:
+#      RUNTESTS: 0
+#      SAMPLEDATA: 0
+#      FORWARDLOGS: 0
+#      ADV_HOST: 127.0.0.1
+#
+#  elassandra:
+#    container_name: elassandra-search
+#    image: strapdata/elassandra:5.5.0.13
+#    ports:
+#      - "9042:9042"
+#      - "9200:9200"
+#      - "7199:7199"
+#      - "9300:9300"
+#    environment:
+#      CASSANDRA_DC: WITHOUT_REPLICATION
+#      CASSANDRA_CLUSTER_NAME: CYBER_SEARCH
+
+#  prometheus:
+#    container_name: prometheus
+#    image: prom/prometheus:v2.1.0
+#    restart: on-failure
+#    network_mode: host
+#    volumes:
+#      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+#  grafana:
+#    container_name: grafana
+#    image: grafana/grafana:5.0.4
+#    restart: on-failure
+#    network_mode: host
+
+  arango:
+    container_name: arangodb
+    image: arangodb/arangodb
+    restart: on-failure
+    ports:
+      - "8529:8529"
+    environment:
+      - ARANGO_NO_AUTH=1
+      - ARANGO_STORAGE_ENGINE=rocksdb
+# Mount volumes only if using NOT WINDOWS, docker on windows doesn't support SMB so arangodb can't mount volume
+#    volumes:
+#      - ./cyber/arangodb:/var/lib/arangodb3
+
+  parity:
+    container_name: parity
+    image: parity/parity:v1.7.0
+    ports:
+      - "8180:8180"
+      - "8545:8545"
+      - "8546:8546"
+      - "30303:30303"
+      - "30303:30303/udp"
+    volumes:
+      - ./parity.toml:/parity/client.toml
+      - ./cyber/parity/data/client:/root/.local/share/io.parity.ethereum/chains/ethereum/db
+    command: --warp --config /parity/client.toml --ui-interface all
