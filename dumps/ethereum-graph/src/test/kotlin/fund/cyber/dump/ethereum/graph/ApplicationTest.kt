@@ -6,6 +6,6 @@ package cyber.dump.ethereum.graph
  * @author GoodforGod
  * @since 30.04.2018
  */
-class EthereumGraphDumpApplicationTest {
+open class ApplicationTest {
 
 }

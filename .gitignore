@@ -18,7 +18,6 @@ javadoc/
 bin/
 log/
 classes/
-cyber/
 
 # Misc.
 .DS_Store

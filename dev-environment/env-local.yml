@@ -65,7 +65,7 @@ services:
       - ARANGO_STORAGE_ENGINE=rocksdb
 # Mount volumes only if using NOT WINDOWS, docker on windows doesn't support SMB so arangodb can't mount volume
 #    volumes:
-#      - ./cyber/arangodb:/var/lib/arangodb3
+#      - ./cyberstorage/arangodb:/var/lib/arangodb3
 
   parity:
     container_name: parity
@@ -78,5 +78,5 @@ services:
       - "30303:30303/udp"
     volumes:
       - ./parity.toml:/parity/client.toml
-      - ./cyber/parity/data/client:/root/.local/share/io.parity.ethereum/chains/ethereum/db
+      - ./cyberstorage/parity/data:/root/.local/share/io.parity.ethereum/chains/ethereum/db
     command: --warp --config /parity/client.toml --ui-interface all

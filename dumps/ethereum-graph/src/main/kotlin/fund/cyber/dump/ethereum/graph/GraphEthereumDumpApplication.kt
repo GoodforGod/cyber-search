@@ -10,13 +10,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
  * @since 30.04.2018
  */
 @SpringBootApplication
-open class EthereumGraphDumpApplication {
+open class GraphEthereumDumpApplication {
 
     companion object {
 
         @JvmStatic
         fun main(args: Array<String>) {
-            SpringApplication(EthereumGraphDumpApplication::class.java).run(*args)
+            SpringApplication(GraphEthereumDumpApplication::class.java).run(*args)
         }
     }
 }
