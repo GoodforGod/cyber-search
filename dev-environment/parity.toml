@@ -1,0 +1,16 @@
+# This config should be placed in following path:
+#   ~/.local/share/io.parity.ethereum/config.toml
+
+[parity]
+# Kovan Test Network
+chain = "kovan"
+
+[footprint]
+# Disable tracing.
+tracing = "off"
+# Increase performance on HDD.
+db_compaction = "hdd"
+# Prune old state data. Maintains journal overlay - fast but extra 50MB of memory used.
+pruning = "fast"
+# Disable Fat DB.
+fat_db = "off"
