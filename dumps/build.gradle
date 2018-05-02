@@ -11,8 +11,10 @@ project(":dumps:common") {
 
         compile 'org.springframework.boot:spring-boot-starter'
 
+        // ArangoDb
         compile 'com.arangodb:arangodb-java-driver'
-        compile 'com.arangodb:arangodb-spring-boot'
+        compile 'com.arangodb:arangodb-spring-data'
+
         compile 'org.springframework.boot:spring-boot-starter-webflux'
         compile 'org.springframework.boot:spring-boot-starter-reactor-netty'
         compile 'org.springframework.boot:spring-boot-starter-actuator'
@@ -30,6 +32,18 @@ project(":dumps:bitcoin") {
         compile project(":dumps:common")
     }
 }
+
+//project(":dupms:ethereum.graph") {
+//
+//    apply plugin: "org.springframework.boot"
+//
+//    dependencies {
+//        dependency("com.arangodb:arangodb-java-driver:$arangoDriver")
+//        dependency("com.arangodb:arangodb-spring-data:$arangoSpringData")
+//
+//        compile project(":dumps:common")
+//    }
+//}
 
 project(":dumps:ethereum") {
 

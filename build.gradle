@@ -31,6 +31,10 @@ buildscript {
         // metrics
         micrometerVersion = "1.0.0"
 
+        // Arango
+        arangoSpringData = "2.1.2"
+        arangoDriver = "4.4.0"
+
         // logs
         slf4jVersion = "1.7.25"
         lockbackVersion = "1.2.3"
@@ -156,6 +160,10 @@ subprojects {
             dependency("com.nhaarman:mockito-kotlin:$mockitoKotlinVersion") {
                 exclude 'org.jetbrains.kotlin:kotlin-stdlib'
             }
+
+            // ArangoDB
+            dependency("com.arangodb:arangodb-java-driver:$arangoDriver")
+            dependency("com.arangodb:arangodb-spring-data:$arangoSpringData")
 
             dependency("org.ehcache:ehcache:$ehcacheVersion")
             dependency("org.elasticsearch.client:transport:$elasticVersion")
